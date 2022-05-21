@@ -1,0 +1,33 @@
+{
+  "name": "hw-boot-wk14-tech-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bernardjbs/hw-boot-wk14-tech-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bernardjbs/hw-boot-wk14-tech-blog/issues"
+  },
+  "homepage": "https://github.com/bernardjbs/hw-boot-wk14-tech-blog#readme",
+  "dependencies": {
+    "connect-session-sequelize": "^7.1.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "path": "^0.12.7",
+    "sequelize": "^6.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
