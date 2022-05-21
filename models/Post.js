@@ -27,7 +27,6 @@ Post.init(
     sequelize,
     timestamps: true,
     createdAt: 'created_at',
-    freezeTableName: true,
     underscored: true,
     modelName: 'post',
   }

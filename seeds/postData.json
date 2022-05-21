@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Writing good comments: the why, not the how", 
+    "content": "Code comments often get a bad reputation amongst developers as a waste of time, or a sign that your code could be improved. Here's a quote from a CONTRIBUTING.md file I found on GitHub (and there's many, many more like it): "
+  },
+  {
+    "title": "Testing event listeners in JavaScript", 
+    "content": "Testing JavaScript code that's asynchronous can prevent its own set of challenges that you have to ensure you deal with when writing your tests. I recently came across a test that fell foul to the asynchronous code it was trying to test and in this post I'll show you how to look out for these tests and how to fix it."
+  }, 
+  {
+    "title": "Better code reviews", 
+    "content": "When you get a code review request from a colleague, what do you focus on? What reaches the bar for what you consider something that's worth commenting on? And do you make it clear when you're making a comment on something vs considering something so important to change that the code review shouldn't be merged without it?"
+  },
+  {
+    "title": "How code gets bad", 
+    "content": "We've all been there. The one corner (or maybe there's multiple!) of your application that makes you cringe every time you have to touch that part of the code. The proposed feature that you hope doesn't make it into the prioritised list of work because implementing it means diving deep into the guts of the nasty corner of your codebase that is hard if not impossible to work on with confidence."
+  }, 
+  {
+    "title": "Frontend tech choices I'm making in 2020", 
+    "content": "Happy New Year! The world of frontend web development is continually changing with new technologies, ideas and frameworks springing up all the time. Whilst this can get overwhelming, it's also an exciting space to be in with so much opportunity to try new things. Today I've picked out a few libraries, languages or ideas that I'm looking foward to trying in 2020. Some of these aren't necessarily the new shiny thing - TypeScript has been around for a while now - but they are all things that I think might make a big impact on the community in the coming months."
+  }, 
+  {
+    "title": "Getting started with GraphQL: what client to use?", 
+    "content": "When I first started working with GraphQL APIs my first challenge was to decide what GraphQL frontend library I wanted to use. I can remember spending all morning exploring all sorts of options, from small libraries like graphql-request to slightly larger ones like urql and finally the most well known like Apollo. These are all great libraries - in fact we use urql at work - but at this point in time I was working with a tiny GraphQL library that I'd built for a side project and I really didn't need any complexity. I think I lost a good couple of hours trying to decide before thinking: what if I made my own?"
+  } 
+]

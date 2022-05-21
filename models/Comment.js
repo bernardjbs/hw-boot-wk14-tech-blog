@@ -16,11 +16,11 @@ Comment.init(
     }, 
     comment: {
       type: DataTypes.TEXT, 
-      allowNull: FontFaceSetLoadEvent, 
+      allowNull: false, 
     },
     user_id: {
       type: DataTypes.INTEGER, 
-      allowNull: true, 
+      allowNull: false, 
       references: {
         model: 'users', 
         key: 'id'
@@ -28,7 +28,7 @@ Comment.init(
     },
     post_id: {
       type: DataTypes.INTEGER, 
-      allowNull: true, 
+      allowNull: false, 
       references: {
         model: 'posts', 
         key: 'id'
@@ -39,7 +39,6 @@ Comment.init(
     sequelize, 
     timestamps: true,
     createdAt: 'created_at',
-    freezeTableName: true,
     underscored: true,
     modelName: 'comments',
   }

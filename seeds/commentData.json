@@ -1,0 +1,51 @@
+
+[
+  {
+    "comment": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ligula mauris, maximus non dolor quis, faucibus facilisis orci. Vestibulum gravida semper odio, eget imperdiet tellus volutpat in. Nunc quis augue metus. Aliquam non neque nisl. Aenean eget mollis odio, in ullamcorper nisi. Proin aliquam luctus tortor ut fermentum. Sed consectetur."
+  },
+  {
+    "comment": "That is awesome."
+  },
+  {
+    "comment": "So I have an array containing reviews (which I retrieve from firebase firestore). The field 'date' is string in firestore. How can I sort the reviews in descending order based on this date? "
+  },
+  {
+    "comment": "I'm fairly new to JS. Below is what I have so far. After getting the required results from the query, the connection remains on. I have tried using .end() and .close() methods"
+  },
+  {
+    "comment": "I have a 2D diagram that has to be dynamic enough to allow for hiding/showing images, moving shapes around to specific locations"
+  },
+  {
+    "comment": "Earlier I asked a similar question in which the issue was passing the form data to views"
+  },
+  {
+    "comment": "so this is my array: 0"
+  },
+  {
+    "comment": "I need to get a DOM element's width to work with the data later with PHP. The ajax call and the PHP is on the same page"
+  },
+  {
+    "comment": "I am trying to build an e-commerce site with Next.JS and Strapi"
+  },
+  {
+    "comment": "How to show 10 slides per column with Swiper?"
+  },
+  {
+    "comment": "Consider a dynamic table, i.e. a table, the rows of which are build dynamically: <table> "
+  },
+  {
+    "comment": "we have a web app in production"
+  },
+  {
+    "comment": "Good morning everyone, please am trying to validate a select menu in the sense a value cannot be selected twice in the options and I did know how to go about it"
+  },
+  {
+    "comment": "Hi I have an address return function that works in remix but when I try to run it in a truffle test it gives me a promise object"
+  },
+  {
+    "comment": "Divide all the total seating capacities during the selected start and end time equally among the slots created."
+  },
+  {
+    "comment": "Say you have, an array and you're comparing particular elements of that array (with an index) to another array."
+  }
+]
