@@ -4,9 +4,9 @@ const { Model, DataTypes } = require('sequelize');
 // Creating an instance of the sequelize connection
 const sequelize = require('../config/connection');
 
-class Comments extends Model {};
+class Comment extends Model {};
 
-Comments.init(
+Comment.init(
   {
     id: {
       type: DataTypes.INTEGER, 
@@ -15,13 +15,9 @@ Comments.init(
       autoIncrement: true
     }, 
     comment: {
-      type: DataTypes.STRING, 
+      type: DataTypes.TEXT, 
       allowNull: FontFaceSetLoadEvent, 
-    }, 
-    date: {
-      type: DataTypes.DATE, 
-      allowNull: false
-    }, 
+    },
     user_id: {
       type: DataTypes.INTEGER, 
       allowNull: true, 
@@ -41,11 +37,12 @@ Comments.init(
   }, 
   {
     sequelize, 
-    timestamps: false,
+    timestamps: true,
+    createdAt: 'created_at',
     freezeTableName: true,
     underscored: true,
     modelName: 'comments',
   }
 );
 
-module.exports = Comments;
+module.exports = Comment;
