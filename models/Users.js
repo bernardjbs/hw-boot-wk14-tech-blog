@@ -1,32 +1,37 @@
 // Importing Model and Datatypes from sequelize
-const { Model, DataTypes }  = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
+
 // Importing bcript for hashing passwords
 const bcrypt = require('bcrypt');
+
+// Creating an instance of the sequelize connection
 const sequelize = require('../config/connection');
 
-class User extends Model {
+class Users extends Model {
   checkPassword(loginPwd) {
     return bcrypt.compareSync(loginPwd, this.password);
   };
 };
 
-User.init(
+Users.init(
   {
-    id: DataTypes.INTEGER, 
-    allowNull: false,
-    primaryKey: true,
-    autoIncrement: true
-  }, 
-  {
-    username: DataTypes.STRING, 
-    allowNull: false
-  }, 
-  {
-    password: DataTypes.STRING, 
-    allowNull: false, 
-    validate: {
-      len: [8]
-    }
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [8]
+      }
+    },
   },
   {
     hooks: {
@@ -43,8 +48,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'users',
   }
 );
 
-module.exports = User;
+module.exports = Users;
