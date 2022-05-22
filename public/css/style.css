@@ -1,7 +1,41 @@
-body {
-  background-color: red;
+nav ul {
+  margin-right: auto;
+  /* background-color: var(--black); */
+}
+nav li {
+  /* background-color: var(--black); */
+  margin-left: 2em;
+  display: inline-block;
+  list-style-type: none;
+}
+nav li a, #about-me-text {
+  background-color: var(--black);
+  /* color: var(--white); */
+  text-decoration: none;
 }
 
-p {
-  color: green;
+#top {
+  border: 1px solid red;
+}
+
+#nav-title {
+  border: 1px solid blue;
+}
+#bottom {
+  border: 1px solid green;
+}
+
+/* Homepage.handlebars */
+#post {
+  border: 3px solid red;
+}
+
+#div-post-title {
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+}
+
+#div-post-title, #post-content {
+  padding: 0 1em;
 }

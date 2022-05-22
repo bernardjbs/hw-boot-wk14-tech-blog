@@ -2,13 +2,50 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Tech Blog</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/style.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Document</title>
 </head>
 
+<body>
+  <section id="top">
+
+    <section id="nav-bar">
+      <nav>
+        <ul>
+          <li>
+            <a class="nav-text" href="/" tabindex="2">Homepage</a>
+          </li>
+          <li>
+            <a class="nav-text" href="/dashboard" tabindex="3">Dashboard</a>
+          </li>
+          <li>
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <a href="/logout">logout</a>
+            <button class="no-button" id="logout">logout</button>
+            {{else}}
+            <a href="/login">login</a>
+            {{/if}}
+            <!-- if logged in dislay logout else display login -->
+            {{!-- <a class="nav-text" href="" tabindex="4">Login</a> --}}
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+
+
+
+    <section id="nav-title">
+      <p>The tech blog</p>
+      <!-- if ...  -->
+    </section>
+
+  </section>
+</body>
 {{{body}}}
-{{>posts}}
+
 </html>
