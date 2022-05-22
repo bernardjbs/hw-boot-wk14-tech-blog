@@ -1,3 +1,11 @@
+/***** FONTS *****/
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+/***** UNIVERSAL SELECTOR *****/
+* {
+  font-family: 'Ubuntu', sans-serif;
+}
+
 nav ul {
   margin-right: auto;
   /* background-color: var(--black); */
@@ -38,4 +46,19 @@ nav li a, #about-me-text {
 
 #div-post-title, #post-content {
   padding: 0 1em;
+}
+
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  /* color: #1b89bc; */
+  text-decoration: none;
+  font-size: 100%;
+}
+
+.no-button:hover {
+  /* color: #065b83; */
+  text-decoration: underline;
 }

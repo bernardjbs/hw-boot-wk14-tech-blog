@@ -24,7 +24,6 @@
           <li>
             <!-- Conditionally render login or logout links -->
             {{#if logged_in}}
-            <a href="/logout">logout</a>
             <button class="no-button" id="logout">logout</button>
             {{else}}
             <a href="/login">login</a>
@@ -37,8 +36,6 @@
     </section>
 
 
-
-
     <section id="nav-title">
       <p>The tech blog</p>
       <!-- if ...  -->
@@ -47,5 +44,8 @@
   </section>
 </body>
 {{{body}}}
-
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </html>
