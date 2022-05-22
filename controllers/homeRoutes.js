@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
+const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -37,16 +38,29 @@ router.get('/posts/:id', async(req, res) => {
       include: [
         {
           model: Comment, 
-          attributes: ['comment']
-        }
+          on: {
+            col1: sequelize.where(sequelize.col("post.id"), "=", sequelize.col("comments.post_id"))
+          }
+        } 
       ]
     });
-
     // Serialize the data to pass to view
     const post = postData.get({ plain: true });
-
+    const post_userData = await User.findByPk(post.user_id, {include: [{model: Comment}]})
+    const postOwner = post_userData.get({plain: true})
+    post.postOwner = postOwner.username;
+    
+    for(i=0; i<post.comments.length; i++) {
+      const commentOwnerID = post.comments[i].user_id;
+      const commentOwnerData = await User.findByPk(commentOwnerID);
+      const commentOwner = commentOwnerData.get({plain: true});
+      const commentOwnerUsername = commentOwner.username;
+      post.comments[i].commentOwner = commentOwnerUsername;
+      
+    }
+        
     res.render('posts', {
-      ...post, 
+      post, 
       logged_in: req.session.logged_in
     });
   } catch (err) {

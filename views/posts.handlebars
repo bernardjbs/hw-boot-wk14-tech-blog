@@ -1,0 +1,27 @@
+<div>
+  <section id="post">
+    <section id="div-post-title">
+      <section id="post-title">
+        <p>{{post.title}}</p>
+      </section>
+      <section id="posted-by">
+        <p>posted by: {{post.postOwner}} on {{format_date post.created_at}}</p>
+      </section>
+    </section>
+
+    <section id="post-content">
+      <p>{{post.content}}</p>
+    </section>
+  </section>
+
+  <section id="comments">
+    {{#each post.comments as |comment|}}
+    {{comment.comment}}
+    <br>
+    commented by {{comment.commentOwner}} on {{format_date comment.created_at}}
+    <br>
+    <br>
+    {{/each}}
+  </section>
+
+</div>

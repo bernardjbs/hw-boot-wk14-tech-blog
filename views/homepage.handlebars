@@ -4,7 +4,7 @@
   <section id="post">
     <section id="div-post-title">
       <section id="post-title">
-        <p>{{post.title}}</p>
+        <p><a href="/posts/{{post.id}}">{{post.title}}</a></p>
       </section>
       <section id="posted-by">
         <p>posted by: {{users.username}} on {{format_date post.created_at}}</p>
