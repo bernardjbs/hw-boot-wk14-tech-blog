@@ -1,37 +1,19 @@
 <!-- Loop over each object in the projects array -->
 
+{{#each posts as |post| }}
   <section id="post">
-
     <section id="div-post-title">
       <section id="post-title">
-        <p>Why MVC is so important</p>
+        <p>{{post.title}}</p>
       </section>
       <section id="posted-by">
-        <p>posted by: bernardjbs on 22/05/2022</p>
+        <p>posted by: {{users.username}} on {{format_date post.created_at}}</p>
       </section>
     </section>
     
     <section id="post-content">
-      <p>MVC allows developers to maintain a true separation of concerns, devising their code between the Model layer for data, the View for design, and the Controller layer for application logic</p>
+      <p>{{post.content}}</p>
     </section>
   
   </section>
-
-{{!-- {{#each post as |posts| }}
-<div class="row mb-4 project">
-  <div class="col-md-5">
-    <p>
-      <span for="img" aria-label="money">💲</span>
-      <!-- Pass needed_funding value to the helper function -->
-      <span class="dollar-amount">{{format_amount project.needed_funding}}</span>
-      needed!
-    </p>
-    <p>Created by {{project.user.name}} on {{format_date project.date_created}}</p>
-  </div>
-  <div class="col-md-7">
-    <p>
-      {{project.description}}
-    </p>
-  </div>
-</div>
-{{/each}} --}}
+{{/each}}
