@@ -15,6 +15,11 @@ const PORT = process.env.PORT || 3001;
 // Setup handlebars.js engine with custom helpers
 const hbs = exphbs.create({ helpers });
 
+// Register new handlebar function 
+hbs.handlebars.registerHelper('if_equals', function(arg1, arg2, options) {
+  return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+});
+
 // Defining the session
 const sess = {
   secret: process.env.SECRET,

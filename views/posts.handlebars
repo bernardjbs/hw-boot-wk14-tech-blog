@@ -1,20 +1,20 @@
 <div>
-  <section id="post">
-    <section id="div-post-title">
-      <section id="post-title">
+  <section id='post'>
+    <section id='div-post-title'>
+      <section id='post-title'>
         <p>{{post.title}}</p>
       </section>
-      <section id="posted-by">
+      <section id='posted-by'>
         <p>posted by: {{post.postOwner}} on {{format_date post.created_at}}</p>
       </section>
     </section>
 
-    <section id="post-content">
+    <section id='post-content'>
       <p>{{post.content}}</p>
     </section>
   </section>
 
-  <section id="comments">
+  <section id='comments'>
     {{#each post.comments as |comment|}}
     {{comment.comment}}
     <br>
@@ -24,4 +24,9 @@
     {{/each}}
   </section>
 
+  <form>
+    <label for='comment-text'>Leave a comment</label>
+    <textarea placeholder='Your comment'></textarea>
+    <button type="submit">Save</button>
+  </form>
 </div>

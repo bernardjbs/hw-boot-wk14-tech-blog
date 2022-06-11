@@ -1,1 +1,33 @@
-<h1>My Dashboard</h1>
+
+
+<h1>List of posts created by me</h1>
+<section class='post-section' data-user-id='{{id}}'>
+  
+  {{#each posts as |post|}}
+    <div class='posts'>
+
+      <section class='div-post-title'>
+        <section class='post-title-section'>
+          <p><a class='post-title' data-post-id='{{post.id}}' href='/view-post/{{post.id}}'>{{post.title}}</a></p>
+        </section>
+        <section class='posted-by-section'>
+          <p>posted on {{format_date post.created_at}}</p>
+        </section>
+      </section>
+
+      <section class='post-content-section'>
+        <p class='post-content' data-post-id='{{post.id}}'>{{post.content}}</p>
+      </section>
+
+      <div>
+        <button class='button-send-post-info' data-post-id='{{post.id}}'>Edit</button>
+      </div>
+
+    </div>
+  {{/each}}
+  
+</section>
+
+{{> createOrUpdatePost}}
+
+<script src="./js/dashboard.js"></script>

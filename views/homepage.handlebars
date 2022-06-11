@@ -1,16 +1,13 @@
-<!-- Loop over each object in the projects array -->
-
 {{#each posts as |post| }}
   <section id="post">
     <section id="div-post-title">
       <section id="post-title">
-        <p><a href="/posts/{{post.id}}">{{post.title}}</a></p>
+        <p><a href="/view-post/{{post.id}}">{{post.title}}</a></p>
       </section>
       <section id="posted-by">
         <p>posted by: {{users.username}} on {{format_date post.created_at}}</p>
       </section>
     </section>
-    
     <section id="post-content">
       <p>{{post.content}}</p>
     </section>

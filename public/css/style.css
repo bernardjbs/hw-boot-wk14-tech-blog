@@ -23,7 +23,7 @@ nav li a, #about-me-text {
 }
 
 #top {
-  border: 1px solid red;
+  border: 10px solid orange;
 }
 
 #nav-title {
@@ -34,7 +34,7 @@ nav li a, #about-me-text {
 }
 
 /* Homepage.handlebars */
-#post {
+.posts {
   border: 3px solid red;
 }
 

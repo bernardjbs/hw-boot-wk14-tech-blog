@@ -3,6 +3,7 @@ const { User }  = require('../../models');
 
 router.post('/', async(req, res) => {
   try {
+    console.log(req.body)
     const userData = await User.create(req.body);
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -11,7 +12,7 @@ router.post('/', async(req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({message: "Request could not be performed"});
   }
 });
 
@@ -37,6 +38,7 @@ router.post('/login', async (req, res) => {
 
     req.session.save(() => {
       req.session.user_id = userData.id;
+      req.session.username = userData.username;
       req.session.logged_in = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
