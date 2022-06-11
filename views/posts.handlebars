@@ -23,10 +23,11 @@
     <br>
     {{/each}}
   </section>
-
-  <form>
+  <form class='form-add-comment' data-post-id='{{post.id}}'>
     <label for='comment-text'>Leave a comment</label>
-    <textarea placeholder='Your comment'></textarea>
+    <textarea class='input-comment' placeholder='Your comment'></textarea>
     <button type="submit">Save</button>
   </form>
 </div>
+
+<script src="/js/comment.js"></script>

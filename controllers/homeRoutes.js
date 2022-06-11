@@ -35,8 +35,10 @@ router.get('/view-post/:id', async (req, res) => {
         }
       ]
     });
+    
     // Serialize the data to pass to view
     const post = postData.get({ plain: true });
+    
     const post_userData = await User.findByPk(post.user_id, { include: [{ model: Comment }] })
     const postOwner = post_userData.get({ plain: true })
     post.postOwner = postOwner.username;
@@ -47,9 +49,8 @@ router.get('/view-post/:id', async (req, res) => {
       const commentOwner = commentOwnerData.get({ plain: true });
       const commentOwnerUsername = commentOwner.username;
       post.comments[i].commentOwner = commentOwnerUsername;
-
     }
-
+    
     res.render('posts', {
       post,
       logged_in: req.session.logged_in,
