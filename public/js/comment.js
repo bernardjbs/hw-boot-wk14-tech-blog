@@ -1,4 +1,4 @@
-
+// Add a new comment
 const newCommentFormHandler = async (event) => {
   event.preventDefault();
 
@@ -28,3 +28,22 @@ const newCommentFormHandler = async (event) => {
 document
   .querySelector('.form-add-comment')
   .addEventListener('submit', newCommentFormHandler);
+
+// Delete an existing comment
+const delCommentBtnEl = document.querySelector('.button-delete-comment');
+const commentId = delCommentBtnEl.getAttribute('data-id');
+
+const deleteComment = async () => {
+  const response = await fetch(`/api/comments/${commentId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    window.location.replace(window.location.pathname)
+  } else {
+    alert('Failed to delete comment');
+  }
+
+}
+
+delCommentBtnEl.addEventListener('click', deleteComment)

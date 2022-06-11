@@ -42,6 +42,7 @@ router.get('/view-post/:id', async (req, res) => {
     const post_userData = await User.findByPk(post.user_id, { include: [{ model: Comment }] })
     const postOwner = post_userData.get({ plain: true })
     post.postOwner = postOwner.username;
+    post.logged_user_id = req.session.user_id;
 
     for (i = 0; i < post.comments.length; i++) {
       const commentOwnerID = post.comments[i].user_id;
@@ -50,7 +51,7 @@ router.get('/view-post/:id', async (req, res) => {
       const commentOwnerUsername = commentOwner.username;
       post.comments[i].commentOwner = commentOwnerUsername;
     }
-    
+    console.log(post);
     res.render('posts', {
       post,
       logged_in: req.session.logged_in,

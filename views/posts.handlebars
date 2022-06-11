@@ -1,3 +1,12 @@
+{{!-- 
+
+From controller: homeRoutes
+Route: /view-post/:id
+Post Data: post_id as id, title, content, user_id, created_at, updatedAt, postOwner
+Comments Data: [comment_id as id, user_id, post_id, created_at, updatedAt, commentOwner]
+Other Data: logged_in, username, logged in user as logged_user_id
+ --}}
+
 <div>
   <section id='post'>
     <section id='div-post-title'>
@@ -17,17 +26,24 @@
   <section id='comments'>
     {{#each post.comments as |comment|}}
     {{comment.comment}}
-    <br>
     commented by {{comment.commentOwner}} on {{format_date comment.created_at}}
+      {{#compare ../post.logged_user_id 'eq' comment.user_id}}
+      <button class='button-delete-comment' data-id='{{comment.id}}'>Delete Comment</button>
+      {{/compare}}
+    
+    <br>
     <br>
     <br>
     {{/each}}
   </section>
+
+  {{#if logged_in}} 
   <form class='form-add-comment' data-post-id='{{post.id}}'>
     <label for='comment-text'>Leave a comment</label>
     <textarea class='input-comment' placeholder='Your comment'></textarea>
     <button type="submit">Save</button>
   </form>
+  {{/if}}
 </div>
 
 <script src="/js/comment.js"></script>

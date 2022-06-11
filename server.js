@@ -20,6 +20,22 @@ hbs.handlebars.registerHelper('if_equals', function(arg1, arg2, options) {
   return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
 });
 
+hbs.handlebars.registerHelper("compare", function (operand_1, operator, operand_2, options) {
+  console.log(`logged in as ${operand_1} - comment owner: ${operand_2}`)
+  var operators = {
+   'eq': function(l,r) { return l == r; },
+   'noteq': function(l,r) { return l != r; },
+   'gt': function(l,r) { return Number(l) > Number(r); },
+   'or': function(l,r) { return l || r; },
+   'and': function(l,r) { return l && r; },
+   '%': function(l,r) { return (l % r) === 0; }
+  }
+  , result = operators[operator](operand_1,operand_2);
+
+  if (result) return options.fn(this);
+  else  return options.inverse(this);
+});
+
 // Defining the session
 const sess = {
   secret: process.env.SECRET,
