@@ -7,13 +7,16 @@ Comments Data: [comment_id as id, user_id, post_id, created_at, updatedAt, comme
 Other Data: logged_in, username, logged in user as logged_user_id
  --}}
 
-<div>
-  <section id='post'>
-    <section id='div-post-title'>
-      <section id='post-title'>
-        <p>{{post.title}}</p>
+<section class='container comment-container'>
+  <section class='card-post'>
+    <section class='card-post-title'>
+      <h2>POST</h2>
+    </section>
+    <section class='top-post-title'>
+      <section class='post-title-section'>
+        <h3>{{post.title}}</h3>
       </section>
-      <section id='posted-by'>
+      <section class='info posted-by-section'>
         <p>posted by: {{post.postOwner}} on {{format_date post.created_at}}</p>
       </section>
     </section>
@@ -23,27 +26,37 @@ Other Data: logged_in, username, logged in user as logged_user_id
     </section>
   </section>
 
-  <section id='comments'>
+  <section class='comments-section'>
+
     {{#each post.comments as |comment|}}
-    {{comment.comment}}
-    commented by {{comment.commentOwner}} on {{format_date comment.created_at}}
-      {{#compare ../post.logged_user_id 'eq' comment.user_id}}
-      <button class='button-delete-comment' data-id='{{comment.id}}'>Delete Comment</button>
-      {{/compare}}
+
+    <section class="card-comment">
+
+      <section class="card-comment-title">
+        <h2>commented by {{comment.commentOwner}} on {{format_date comment.created_at}}</h2>
+      </section>
+
+      <section class="comment">
+        <p>{{comment.comment}}</p>
+
+        {{#compare ../post.logged_user_id 'eq' comment.user_id}}
+        <button class='btn btn-danger button-delete-comment' data-id='{{comment.id}}'>Delete Comment</button>
+        {{/compare}}
+
+      </section>
     
-    <br>
-    <br>
-    <br>
+
+    </section>
     {{/each}}
   </section>
 
   {{#if logged_in}} 
   <form class='form-add-comment' data-post-id='{{post.id}}'>
     <label for='comment-text'>Leave a comment</label>
-    <textarea class='input-comment' placeholder='Your comment'></textarea>
-    <button type="submit">Save</button>
+    <textarea rows='8' class='input-comment' placeholder='Your comment'></textarea>
+    <button class='btn btn-primary button-save' type="submit">Save</button>
   </form>
   {{/if}}
-</div>
+</section>
 
 <script src="/js/comment.js"></script>

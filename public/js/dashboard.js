@@ -1,39 +1,49 @@
 const postSectionEl = document.querySelector('.post-section');
 let inputTitle = document.querySelector('#input-title');
 let inputContent = document.querySelector('#input-content');
+let btnSendInfo = document.querySelector('.button-send-post-info');
 
 const titleEl = document.querySelectorAll('.post-title');
 const contentEl = document.querySelectorAll('.post-content');
 
 const btnPostEl = document.querySelector('#button-post');
+const btnDeleteEl = document.querySelectorAll('.button-delete-post');
 
 const user_id = postSectionEl.getAttribute('data-user-id');
 
 let postId = 0;
 let postToUpdate = {};
 
+// Function to scroll to the bottom of page
+const scrollingElement = (document.scrollingElement || document.body);
+const scrollToBottom = () => {
+   scrollingElement.scrollTop = scrollingElement.scrollHeight;
+}
+
 const clickHandler = (event) => {
-  if (event.target.matches('button')) {
+  // if (event.target.matches('button')) {
+  if (event.target.classList.contains('button-send-post-info')) {
     postId = event.target.getAttribute('data-post-id');
-  }
-  const getInfo = (el, type) => {
-    let id = el.getAttribute('data-post-id');
-    if (id == postId) {
-      postToUpdate.id = postId;
-      if (type == 'title') {
-        inputTitle.value = el.innerHTML;
+    const getInfo = (el, type) => {
+      let id = el.getAttribute('data-post-id');
+      if (id == postId) {
+        postToUpdate.id = postId;
+        if (type == 'title') {
+          inputTitle.value = el.innerHTML;
+        }
+        else if (type == 'content') {
+          inputContent.value = el.innerHTML;
+        }
       }
-      else if (type == 'content') {
-        inputContent.value = el.innerHTML;
-      }
+      return;
     }
-    return;
+    titleEl.forEach(el => getInfo(el, 'title'));
+    contentEl.forEach(el => getInfo(el, 'content'));
+    btnPostEl.textContent = 'Update';
+    btnPostEl.classList.add('btn-update-post');
+    btnPostEl.classList.remove('btn-add-post');
+    scrollToBottom();
   }
-  titleEl.forEach(el => getInfo(el, 'title'));
-  contentEl.forEach(el => getInfo(el, 'content'));
-  btnPostEl.textContent = 'Update';
-  btnPostEl.classList.add('btn-update-post');
-  btnPostEl.classList.remove('btn-add-post');
 }
 postSectionEl.addEventListener('click', clickHandler);
 
@@ -60,9 +70,8 @@ const updatePost = async (event) => {
   }
 }
 
+// Function to add a new post or update an existing post 
 const addPost = async (event) => {
-  // Add new post
-  console.log("hello");
   const title = inputTitle.value.trim();
   const content = inputContent.value.trim();
 
@@ -88,12 +97,31 @@ const addPost = async (event) => {
 
 const checkSubmit = (classList) => {
   if (classList.contains('btn-update-post')) {
-    console.log('UPDATE POST');
     updatePost();
   } else if (classList.contains('btn-add-post')) {
-    console.log('ADD POST');
     addPost();
   }
 }
-
 btnPostEl.addEventListener('click', () => checkSubmit(btnPostEl.classList));
+
+
+// Function to delete an existing post
+const deletePost = async (postId) => {
+  const response = await fetch(`/api/post/${postId}`, {
+    method: 'DELETE',
+  });
+
+  if (response.ok) {
+    window.location.replace(window.location.pathname)
+  } else {
+    alert('Failed to delete post');
+  };
+};
+
+btnDeleteEl.forEach(el => el.addEventListener('click', () => { 
+  const postId = el.getAttribute('data-post-id');
+  deletePost(postId)
+}));
+
+
+

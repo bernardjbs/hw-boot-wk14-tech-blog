@@ -1,17 +1,21 @@
 const router = require('express').Router();
-const session = require('express-session');
 const { User, Post, Comment } = require('../models');
 const { sequelize } = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all projects and JOIN with user data
     const postData = await Post.findAll();
     
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
+    // Add username to posts data
+    for (i = 0; i < posts.length; i++) {
+      const userData = await User.findByPk(posts[i].user_id)
+      posts[i].username = userData.dataValues.username;
+    }  
+    
     // Pass serialized data and session flag into template
     res.render('homepage', {
       posts,
@@ -51,7 +55,6 @@ router.get('/view-post/:id', async (req, res) => {
       const commentOwnerUsername = commentOwner.username;
       post.comments[i].commentOwner = commentOwnerUsername;
     }
-    console.log(post);
     res.render('posts', {
       post,
       logged_in: req.session.logged_in,
@@ -91,7 +94,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [{ model: Post }],
     });
     const user = userData.get({ plain: true });
-    console.log(user)
     res.render('dashboard', {
       ...user,
       username: req.session.username,

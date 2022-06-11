@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // Route to update a user's post by post_id
@@ -36,6 +36,42 @@ router.get('/:id', withAuth, async (req, res) => {
     res.status(500).json({message: 'Your request could not be performed, please try again', body: err })
   }
 })
+
+// Route to delete a post 
+router.delete('/:id', withAuth, async (req, res) => {
+  console.log(req.params.id);
+  try {
+    const commentData = await Comment.findAll({
+      where: {
+        post_id: req.params.id,
+      },
+    });
+
+    if (commentData) {
+      await Comment.destroy({ where: { post_id: req.params.id } });
+    };
+
+    const postData = await Post.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+
+    if (!postData) {
+      res.status(404).json({
+        message:
+          'The post you are trying to delete could not be found, please try again',
+      });
+    };
+
+    res.status(200).json(postData);
+  } catch (err) {
+    res.status(500).json({
+      message: 'Your request could not be performed, please try again',
+      body: err,
+    });
+  };
+});
 
 module.exports = router
 

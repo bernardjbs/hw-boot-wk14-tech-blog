@@ -42,8 +42,7 @@ const deleteComment = async () => {
     window.location.replace(window.location.pathname)
   } else {
     alert('Failed to delete comment');
-  }
+  };
+};
 
-}
-
-delCommentBtnEl.addEventListener('click', deleteComment)
+delCommentBtnEl.addEventListener('click', deleteComment);

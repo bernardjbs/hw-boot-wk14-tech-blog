@@ -1,16 +1,22 @@
-{{#each posts as |post| }}
-  <section id="post">
-    <section id="div-post-title">
-      <section id="post-title">
-        <p><a href="/view-post/{{post.id}}">{{post.title}}</a></p>
+<section class="container">
+  <section class="post-section">
+    {{#each posts as |post|}}
+    <section class='card-post'>
+
+      <section class='top-post-title'>
+        <section class='post-title-section'>
+          <h3><a class='post post-title' href='/view-post/{{post.id}}'>{{post.title}}</a></h3>
+        </section>
+        <section class='info posted-by-section'>
+          <p>posted by {{post.username}} on {{format_date post.created_at}}</p>
+        </section>
       </section>
-      <section id="posted-by">
-        <p>posted by: {{users.username}} on {{format_date post.created_at}}</p>
+
+      <section class='post-content-section'>
+        <p class='post-content'>{{post.content}}</p>
       </section>
+
     </section>
-    <section id="post-content">
-      <p>{{post.content}}</p>
-    </section>
-  
+    {{/each}}
   </section>
-{{/each}}
+</section>

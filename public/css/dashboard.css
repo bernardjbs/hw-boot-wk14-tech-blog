@@ -1,0 +1,17 @@
+/* .dashboard-container {
+  padding: 0 2rem;
+} */
+
+.create-post-inputs {
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-post-inputs > label, #button-post {
+  margin-top: 1rem;
+}
+
+.button-delete-post {
+  margin-left: 0.5rem;
+}

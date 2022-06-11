@@ -15,18 +15,18 @@ Post.init(
       autoIncrement: true
     },
     title: {
-      type: DataTypes.STRING, 
+      type: DataTypes.STRING,
       allowNull: false
-    }, 
+    },
     content: {
-      type: DataTypes.TEXT, 
+      type: DataTypes.TEXT,
       allowNull: false
     },
     user_id: {
-      type: DataTypes.INTEGER, 
-      allowNull: false, 
+      type: DataTypes.INTEGER,
+      allowNull: false,
       references: {
-        model: 'users', 
+        model: 'users',
         key: 'id'
       }
     }

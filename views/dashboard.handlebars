@@ -1,33 +1,39 @@
+<section class="container">
+  {{#if posts}}
+    <h2>List of posts created by me</h2>
+  {{else}}
+    <h2>Add a new post</h2>
+  {{/if}}
 
+  <section class='post-section' data-user-id='{{id}}'>
+    {{#each posts as |post|}}
+    <section class='card-post posts'>
 
-<h1>List of posts created by me</h1>
-<section class='post-section' data-user-id='{{id}}'>
-  
-  {{#each posts as |post|}}
-    <div class='posts'>
-
-      <section class='div-post-title'>
+      <section class='top-post-title'>
         <section class='post-title-section'>
-          <p><a class='post-title' data-post-id='{{post.id}}' href='/view-post/{{post.id}}'>{{post.title}}</a></p>
+          <h3><a class='post post-title' data-post-id='{{post.id}}' href='/view-post/{{post.id}}'>{{post.title}}</a>
+          </h3>
         </section>
-        <section class='posted-by-section'>
+        <section class='info posted-by-section'>
           <p>posted on {{format_date post.created_at}}</p>
         </section>
       </section>
 
       <section class='post-content-section'>
         <p class='post-content' data-post-id='{{post.id}}'>{{post.content}}</p>
+        <br />
       </section>
 
       <div>
-        <button class='button-send-post-info' data-post-id='{{post.id}}'>Edit</button>
+        <button class='btn btn-primary button-send-post-info' data-post-id='{{post.id}}'>Edit Post</button>
+        <button class='btn btn-danger button-delete-post' data-post-id='{{post.id}}'>Delete Post</button>
       </div>
 
-    </div>
-  {{/each}}
-  
+    </section>
+    {{/each}}
+  </section>
+  {{> createOrUpdatePost}}
 </section>
 
-{{> createOrUpdatePost}}
 
 <script src="./js/dashboard.js"></script>

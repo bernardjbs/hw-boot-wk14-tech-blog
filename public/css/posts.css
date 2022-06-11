@@ -1,0 +1,42 @@
+.comment-container, .comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card-post-title, .card-comment-title {
+  background: var(--color-bg-variant);
+  border: 1px solid var(--color-primary);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.card-comment-title {
+  background: var(--color-bg-comment);
+  border: 0;
+}
+
+.card-comment-title > h2 {
+  color: var(--color-bg);
+}
+.post-title-section > h3 {
+  color: var(--color-primary);
+}
+
+.card-comment {
+  background: transparent;
+  border: 2px solid var(--color-bg-comment);
+  padding: 1.5rem;
+  border-radius: 1rem;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.button-save {
+  margin-top: 1rem;
+}
