@@ -21,7 +21,6 @@ const scrollToBottom = () => {
 }
 
 const clickHandler = (event) => {
-  // if (event.target.matches('button')) {
   if (event.target.classList.contains('button-send-post-info')) {
     postId = event.target.getAttribute('data-post-id');
     const getInfo = (el, type) => {
@@ -52,6 +51,11 @@ const updatePost = async (event) => {
   postToUpdate.title = inputTitle.value;
   postToUpdate.content = inputContent.value;
 
+  if (postToUpdate.title == '' || postToUpdate.content == '') {
+    alert('Please enter a title and a content');
+    return;
+  }
+
   const response = await fetch(`api/post/${postToUpdate.id}`, {
     method: 'PUT', 
     body: JSON.stringify({
@@ -74,6 +78,11 @@ const updatePost = async (event) => {
 const addPost = async (event) => {
   const title = inputTitle.value.trim();
   const content = inputContent.value.trim();
+
+  if (!title || !content) {
+    alert('Please enter a title and a content');
+    return;
+  }
 
   const response = await fetch('/api/post', {
     method: 'POST',
@@ -107,15 +116,21 @@ btnPostEl.addEventListener('click', () => checkSubmit(btnPostEl.classList));
 
 // Function to delete an existing post
 const deletePost = async (postId) => {
-  const response = await fetch(`/api/post/${postId}`, {
-    method: 'DELETE',
-  });
-
-  if (response.ok) {
-    window.location.replace(window.location.pathname)
-  } else {
-    alert('Failed to delete post');
-  };
+  if (confirm('ARE YOU SURE YOU WANT TO DELETE POST?') == true) {
+    const response = await fetch(`/api/post/${postId}`, {
+      method: 'DELETE',
+    });
+  
+    if (response.ok) {
+      window.location.replace(window.location.pathname)
+    } else {
+      alert('Failed to delete post');
+    };
+  }
+  else {
+    return;
+  }
+  
 };
 
 btnDeleteEl.forEach(el => el.addEventListener('click', () => { 

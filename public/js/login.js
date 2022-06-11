@@ -14,10 +14,12 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       // If successful, redirect the browser to the profile page
       document.location.replace('/dashboard');
-      alert("go to dashboard")
     } else {
-      alert(response.statusText);
+      alert('Invalid username or password - Please try again');
     }
+  } else if (!username || !password) {
+    alert('Please enter your username and password.')
+    return;
   }
 };
 
