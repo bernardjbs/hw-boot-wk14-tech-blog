@@ -1,11 +1,12 @@
-const postSectionEl = document.querySelector('.post-section');
-let inputTitle = document.querySelector('#input-title');
-let inputContent = document.querySelector('#input-content');
+let inputTitleEl = document.querySelector('#input-title');
+let inputContentEl = document.querySelector('#input-content');
 let btnSendInfo = document.querySelector('.button-send-post-info');
 
 const titleEl = document.querySelectorAll('.post-title');
-const contentEl = document.querySelectorAll('.post-content');
+const postSectionEl = document.querySelector('.post-section');
 
+const btnClearEl = document.querySelector('#button-clear');
+const contentEl = document.querySelectorAll('.post-content');
 const btnPostEl = document.querySelector('#button-post');
 const btnDeleteEl = document.querySelectorAll('.button-delete-post');
 
@@ -20,6 +21,7 @@ const scrollToBottom = () => {
    scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
+// Send title and content to input when Edit button is pressed
 const clickHandler = (event) => {
   if (event.target.classList.contains('button-send-post-info')) {
     postId = event.target.getAttribute('data-post-id');
@@ -28,10 +30,10 @@ const clickHandler = (event) => {
       if (id == postId) {
         postToUpdate.id = postId;
         if (type == 'title') {
-          inputTitle.value = el.innerHTML;
+          inputTitleEl.value = el.innerHTML;
         }
         else if (type == 'content') {
-          inputContent.value = el.innerHTML;
+          inputContentEl.value = el.innerHTML;
         }
       }
       return;
@@ -41,6 +43,8 @@ const clickHandler = (event) => {
     btnPostEl.textContent = 'Update';
     btnPostEl.classList.add('btn-update-post');
     btnPostEl.classList.remove('btn-add-post');
+    btnClearEl.classList.remove('hide');
+    btnClearEl.classList.add('show');
     scrollToBottom();
   }
 }
@@ -48,8 +52,8 @@ postSectionEl.addEventListener('click', clickHandler);
 
 const updatePost = async (event) => {
   // Update post
-  postToUpdate.title = inputTitle.value;
-  postToUpdate.content = inputContent.value;
+  postToUpdate.title = inputTitleEl.value;
+  postToUpdate.content = inputContentEl.value;
 
   if (postToUpdate.title == '' || postToUpdate.content == '') {
     alert('Please enter a title and a content');
@@ -76,8 +80,8 @@ const updatePost = async (event) => {
 
 // Function to add a new post or update an existing post 
 const addPost = async (event) => {
-  const title = inputTitle.value.trim();
-  const content = inputContent.value.trim();
+  const title = inputTitleEl.value.trim();
+  const content = inputContentEl.value.trim();
 
   if (!title || !content) {
     alert('Please enter a title and a content');
@@ -138,5 +142,28 @@ btnDeleteEl.forEach(el => el.addEventListener('click', () => {
   deletePost(postId)
 }));
 
+
+// Checks if input is empty then hide clear button
+const checkInput = (element) => {
+  if (element.value == '') {
+    btnClearEl.classList.add('hide');
+    btnClearEl.classList.remove('show');
+  } else {
+    btnClearEl.classList.add('show');
+    btnClearEl.classList.remove('hide');
+  }
+}
+
+inputTitleEl.addEventListener('keyup', () => checkInput(inputTitleEl))
+inputContentEl.addEventListener('keyup', () => checkInput(inputContentEl))
+
+// Clear title and content inputs when clear button is clicked
+const clearInput = () => {
+  inputTitleEl.value = '';
+  inputContentEl.value = '';
+  btnClearEl.classList.remove('show');
+  btnClearEl.classList.add('hide');
+}
+btnClearEl.addEventListener('click', () => clearInput())
 
 

@@ -1,11 +1,11 @@
-{{!-- 
+{{!--
 
 From controller: homeRoutes
 Route: /view-post/:id
 Post Data: post_id as id, title, content, user_id, created_at, updatedAt, postOwner
 Comments Data: [comment_id as id, user_id, post_id, created_at, updatedAt, commentOwner]
 Other Data: logged_in, username, logged in user as logged_user_id
- --}}
+--}}
 
 <section class='container comment-container'>
   <section class='card-post'>
@@ -44,17 +44,20 @@ Other Data: logged_in, username, logged in user as logged_user_id
         {{/compare}}
 
       </section>
-    
+
 
     </section>
     {{/each}}
   </section>
 
-  {{#if logged_in}} 
+  {{#if logged_in}}
   <form class='form-add-comment' data-post-id='{{post.id}}'>
     <label for='comment-text'>Leave a comment</label>
     <textarea rows='8' class='input-comment' placeholder='Your comment'></textarea>
-    <button class='btn btn-primary button-save' type="submit">Save</button>
+    <section class="buttons">
+      <button class='btn btn-primary' id='button-save'>Save</button>
+      <button class='btn btn-primary btn-clear-post hide' type='button' id='button-clear'>Clear</button>
+    </section>
   </form>
   {{/if}}
 </section>

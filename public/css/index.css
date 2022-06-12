@@ -107,6 +107,9 @@ a:hover {
   margin-top: 1rem;
 }
 
+.buttons {
+  margin-top: 1rem;
+}
 img {
   display: block;
   width: 100%;
@@ -148,4 +151,12 @@ input, textarea {
   flex-direction: column;
   width: 500px;
   padding: 2rem;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.show {
+  visibility: visible;
 }

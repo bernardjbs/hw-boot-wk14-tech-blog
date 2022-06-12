@@ -8,6 +8,7 @@ const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store); // To be able to store sessions in the database
 
+const cookieTimeout = (60 * 1000) // Set cookie to expire in 1 minute
 // Creating app as an instance of express
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -39,8 +40,9 @@ hbs.handlebars.registerHelper("compare", function (operand_1, operator, operand_
 // Defining the session
 const sess = {
   secret: process.env.SECRET,
-  cookie: {},
-  resave: false,
+  cookie: { expires: cookieTimeout },
+  resave: true,
+  rolling: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize
