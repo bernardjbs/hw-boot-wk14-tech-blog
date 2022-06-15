@@ -59,6 +59,12 @@ From the homepage or dashboard, a logged in user can add comments on the listed 
 ## Session
 The website includes a session cookie which expires if the user is inactive for 60 seconds. 
 
+## Responsiveness
+The website is responsive on small and medium devices
+
+![responsive](./public/img/screenshots/responsive.jpg)
+
+
 ## Link to deployed application
 [Visit Site: Tech Blog](https://tech-blog-wk14.herokuapp.com/)
 
