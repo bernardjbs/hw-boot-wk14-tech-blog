@@ -68,6 +68,10 @@ nav li {
   nav li {
     display: block;
   }
+
+.hero {
+  margin: 0;
+}
   .hero > img {
     visibility: hidden;
   }
