@@ -1,3 +1,4 @@
+// Function to handle the signup form to sign out a user by fetch request to the users api
 const signupFormHandler = async (event) => {
   event.preventDefault();
 

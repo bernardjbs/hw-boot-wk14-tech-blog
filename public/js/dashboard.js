@@ -1,3 +1,4 @@
+// Constants and Variables
 let inputTitleEl = document.querySelector('#input-title');
 let inputContentEl = document.querySelector('#input-content');
 let btnSendInfo = document.querySelector('.button-send-post-info');
@@ -50,8 +51,8 @@ const clickHandler = (event) => {
 }
 postSectionEl.addEventListener('click', clickHandler);
 
+// Function to update a post by fetch request to the post api
 const updatePost = async (event) => {
-  // Update post
   postToUpdate.title = inputTitleEl.value;
   postToUpdate.content = inputContentEl.value;
 
@@ -78,7 +79,7 @@ const updatePost = async (event) => {
   }
 }
 
-// Function to add a new post or update an existing post 
+// Function to add a new post or update an existing post by fetch request to the post api
 const addPost = async (event) => {
   const title = inputTitleEl.value.trim();
   const content = inputContentEl.value.trim();
@@ -118,7 +119,7 @@ const checkSubmit = (classList) => {
 btnPostEl.addEventListener('click', () => checkSubmit(btnPostEl.classList));
 
 
-// Function to delete an existing post
+// Function to delete an existing post by fetch request to the post api
 const deletePost = async (postId) => {
   if (confirm('ARE YOU SURE YOU WANT TO DELETE POST?') == true) {
     const response = await fetch(`/api/post/${postId}`, {
@@ -143,7 +144,7 @@ btnDeleteEl.forEach(el => el.addEventListener('click', () => {
 }));
 
 
-// Checks if input is empty then hide clear button
+// Function to Check if input is empty then hide clear button
 const checkInput = (element) => {
   if (element.value == '') {
     btnClearEl.classList.add('hide');
@@ -157,7 +158,7 @@ const checkInput = (element) => {
 inputTitleEl.addEventListener('keyup', () => checkInput(inputTitleEl))
 inputContentEl.addEventListener('keyup', () => checkInput(inputContentEl))
 
-// Clear title and content inputs when clear button is clicked
+// Function to clear title and content inputs when clear button is clicked
 const clearInput = () => {
   inputTitleEl.value = '';
   inputContentEl.value = '';

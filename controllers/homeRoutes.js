@@ -27,6 +27,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Route to view a post by post_id
 router.get('/view-post/:id', async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id, {
@@ -65,8 +66,8 @@ router.get('/view-post/:id', async (req, res) => {
   }
 });
 
+// Route to check if the user is already logged in, then redirect to dashboard. If not render the login page
 router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
@@ -75,8 +76,8 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+// Route to check if the user is already logged in, thenk redirect to dashboard. If not render the signup page
 router.get('/signup', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     return;
@@ -85,7 +86,7 @@ router.get('/signup', (req, res) => {
   res.render('signup');
 });
 
-// Use withAuth middleware to prevent access to route
+// Route to render dashboard page - withAuth middleware is used to prevent unwanted access to route
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID

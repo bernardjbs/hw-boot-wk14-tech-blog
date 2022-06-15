@@ -63,3 +63,29 @@ nav li {
 .nav-info {
   padding: 0 2rem;
 }
+
+@media screen and (max-width: 750px) {
+  nav li {
+    display: block;
+  }
+  .hero > img {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav li {
+    font-size: 0.75rem;
+    display: block;
+  }
+  h1 {
+    font-size: 1rem;
+  }
+  .main-top {
+    flex-direction: column;
+  }
+  .info.logged-as {
+    font-size: 0.75rem;
+    margin: 0.5rem 0;
+  }
+}

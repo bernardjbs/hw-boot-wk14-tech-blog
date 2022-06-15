@@ -1,9 +1,5 @@
-/* .dashboard-container {
-  padding: 0 2rem;
-} */
-
 .create-post-inputs {
-  width: 50vw;
+  /* width: 50vw; */
   display: flex;
   flex-direction: column;
 }
@@ -14,4 +10,20 @@
 
 .button-delete-post {
   margin-left: 0.5rem;
+}
+
+#input-title, #input-content {
+  width: 50%;
+}
+
+@media screen and (max-width: 750px) {
+  #input-title, #input-content {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #input-title, #input-content {
+    width: 100%;
+  }
 }

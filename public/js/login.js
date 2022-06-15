@@ -1,3 +1,4 @@
+// Function to handle the login form to login a user by fetch request to the users api
 const loginFormHandler = async (event) => {
   event.preventDefault();
   // Collect values from the login form
