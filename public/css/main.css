@@ -2,7 +2,6 @@
 nav {
   display: flex;
 }
-
 .nav-bar {
   display: flex;
   flex-direction: row;
@@ -15,13 +14,11 @@ nav li {
   list-style-type: none;
   margin-left: 2em;
 }
-
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .main-top {
   width: 100vw;
   display: flex;
@@ -42,24 +39,19 @@ nav li {
   transition: var(--transition);
   font-size: 100%;
 }
-
 .no-button:hover {
   color: var(--color-white);
 }
-
 .logged-as {
   margin-left: 2rem;
 }
-
 .logo-image {
   width: 5rem;
 }
-
 .hero {
   margin-top: 8rem;
   width: 100vw;
 }
-
 .nav-info {
   padding: 0 2rem;
 }
@@ -68,7 +60,9 @@ nav li {
   nav li {
     display: block;
   }
-
+.nav-info {
+  margin-top: 4rem;
+}
 .hero {
   margin: 0;
 }
@@ -91,5 +85,8 @@ nav li {
   .info.logged-as {
     font-size: 0.75rem;
     margin: 0.5rem 0;
+  }
+  .nav-info {
+    margin-top: 7rem;
   }
 }
